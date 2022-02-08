@@ -23,10 +23,13 @@ class Main(QMainWindow, Ui_MainWindow):
             qp = QPainter()
             qp.begin(self)
             qp.setBrush(QColor(randint(0, 256), randint(0, 256), randint(0, 256)))
-            x = randrange(1, 300)
-            y = randrange(1, 300)
-            r = randrange(1, 300)
-            rect = QRect(x, y, x + r, y + r)
+            while True:
+                x = randrange(1, 300)
+                y = randrange(1, 300)
+                r = randrange(1, 300)
+                if x + r <= 800 and y + r <= 600:
+                    break
+            rect = QRect(x, y, r, r)
             qp.drawEllipse(rect)
             qp.end()
             self.flag = False
